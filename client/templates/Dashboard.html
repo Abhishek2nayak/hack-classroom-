@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./../static/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+
+  <body style="background-color: #f2f4fb">
+    <!-- navbar components  -->
+    <div class="navbar">
+      <div class="flex-1 pl-6">
+        <a class="btn btn-ghost normal-case text-xl">
+          <img src="./../assets/logo.png" alt="" class="w-10 h-10" />
+          <span class="text-lg" style="color: #4b13e9">
+            Ask<br />
+            Class
+          </span>
+        </a>
+      </div>
+
+      <div class="flex-none pr-8">
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-circle">
+            <div class="indicator">
+              <i class="fa-regular fa-bell fa-2xl"></i>
+              <span class="badge badge-sm indicator-item">8</span>
+            </div>
+          </label>
+          <div
+            tabindex="0"
+            class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+          >
+            <div class="card-body">
+              <span class="font-bold text-lg">8 Items</span>
+              <span class="text-info">Subtotal: $999</span>
+              <div class="card-actions">
+                <button class="btn btn-primary btn-block">View cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+              />
+            </div>
+          </label>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- main component  -->
+
+    <div class="container flex justify-between pt-10" id="main">
+      <!-- sidebar left  -->
+      <div class="drawer lg:drawer-open" id="sidebar-left">
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col items-center justify-center">
+          <!-- Page content here -->
+        </div>
+        <div class="drawer-side">
+          <!-- <label for="my-drawer-2" class="drawer-overlay"></label>  -->
+
+          <ul class="menu p-4 w-60 text-base-content">
+            <!-- Sidebar content here -->
+            <li>
+              <h1 class="text-3xl" style="color: #4a47f5">My Courses</h1>
+            </li>
+            <li><a>Course 1</a></li>
+            <li><a>Course 2</a></li>
+          </ul>
+        </div>
+        <button class="btn btn-active absolute top-2/3 m-4" id="add-course">
+          Add Course
+        </button>
+      </div>
+
+      <!-- main container  -->
+
+      <div class="card bg-base-100 shadow-xl p-10" id="middle">
+        <h1 class="text-5xl text-black font-medium">
+          Designing with Accessibility in Classrooms
+        </h1>
+        <span class="text-black text-2xl mt-10">Filter By : </span>
+
+        <div class="flex justify-between mt-5">
+          <div class="tab flex gap-20">
+            <button
+              class="tablinks"
+              style="background-color: rgba(159, 218, 211, 0.63)"
+              onclick="openTab(event, 'new')"
+            >
+              New
+            </button>
+            <button
+              class="tablinks"
+              style="background-color: rgba(251, 176, 61, 0.55)"
+              onclick="openTab(event, 'overdue')"
+            >
+              Overdue
+            </button>
+            <button
+              class="tablinks"
+              style="background-color: rgba(184, 194, 255, 1)"
+              onclick="openTab(event, 'solved')"
+            >
+              Solved
+            </button>
+          </div>
+          <button class="text-2xl">
+            Sort <i class="fa-solid fa-arrow-up-wide-short"></i>
+          </button>
+        </div>
+
+        <div class="tab-content" id="new">
+          <div
+            class="card p-7 mt-10"
+            style="
+              border: 1px solid grey;
+              border-radius: 20px;
+              height: auto;
+              background-color: rgba(184, 194, 255, 0.3);
+            "
+          >
+            <div class="flex gap-10 items-center">
+              <img
+                class="w-16 h-16 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                alt=""
+              />
+              <h2 class="text-2xl">
+                Can you explain the importance of typography in design?
+              </h2>
+            </div>
+            <form action="" class="relative">
+                <input
+                  type="text"
+                  placeholder="Type your response here"
+                  class="w-full h-16 mt-6 input input-bordered"
+                />
+                <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+              </form>
+          </div>
+
+          <div
+            class="card p-7 mt-10"
+            style="
+              border: 1px solid grey;
+              border-radius: 20px;
+              height: auto;
+              background-color: rgba(184, 194, 255, 0.3);
+            "
+          >
+            <div class="flex gap-10 items-center">
+              <img
+                class="w-16 h-16 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                alt=""
+              />
+              <h2 class="text-2xl">
+                Can you explain the importance of typography in design?
+              </h2>
+            </div>
+            <div class="flex flex-col gap-3 mt-3">
+              <div
+                class="previous-response"
+                style="
+                  border: 1px solid grey;
+                  border-radius: 20px;
+                  height: auto;
+                  padding: 10px 20px;
+                  background-color: rgba(87, 172, 162, 0.58);
+                  display: flex;
+                 gap:10px;
+                 align-items: center;
+                "
+              >
+                <img
+                  class="w-16 h-16 rounded-full object-cover"
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                  alt=""
+                />
+                <h2 class="text-2xl">
+                  Can you explain the importance of typography in design?
+                </h2>
+              </div>
+              <div
+                class="previous-response"
+                style="
+                  border: 1px solid grey;
+                  border-radius: 20px;
+                  height: auto;
+                  padding: 10px 20px;
+                  background-color: rgba(87, 172, 162, 0.58);
+                  display: flex;
+                 gap:10px;
+                 align-items: center;
+                "
+              >
+                <img
+                  class="w-16 h-16 rounded-full object-cover"
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                  alt=""
+                />
+                <h2 class="text-2xl">
+                  Can you explain the importance of typography in design?
+                </h2>
+              </div>
+            </div>
+
+            <form action="" class="relative">
+              <input
+                type="text"
+                placeholder="Type your response here"
+                class="w-full h-16 mt-6 input input-bordered"
+              />
+              <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="tab-content" id="overdue">
+            <div
+            class="card p-7 mt-10"
+            style="
+              border: 1px solid grey;
+              border-radius: 20px;
+              height: auto;
+              background-color: rgba(184, 194, 255, 0.3);
+            "
+          >
+            <div class="flex gap-10 items-center">
+              <img
+                class="w-16 h-16 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                alt=""
+              />
+              <h2 class="text-2xl">
+                Can you explain the importance of typography in design?
+              </h2>
+            </div>
+            <form action="" class="relative">
+                <input
+                  type="text"
+                  placeholder="Type your response here"
+                  class="w-full h-16 mt-6 input input-bordered"
+                />
+                <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+              </form>
+          </div>
+
+          <div
+            class="card p-7 mt-10"
+            style="
+              border: 1px solid grey;
+              border-radius: 20px;
+              height: auto;
+              background-color: rgba(184, 194, 255, 0.3);
+            "
+          >
+          
+            <div class="flex flex-col gap-3 mt-3">
+              <div
+                class="previous-response"
+                style="
+                  border: 1px solid grey;
+                  border-radius: 20px;
+                  height: auto;
+                  padding: 10px 20px;
+                  background-color: rgba(87, 172, 162, 0.58);
+                  display: flex;
+                 gap:10px;
+                 align-items: center;
+                "
+              >
+                <img
+                  class="w-16 h-16 rounded-full object-cover"
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                  alt=""
+                />
+                <h2 class="text-2xl">
+                  Can you explain the importance of typography in design?
+                </h2>
+              </div>
+              <div
+                class="previous-response"
+                style="
+                  border: 1px solid grey;
+                  border-radius: 20px;
+                  height: auto;
+                  padding: 10px 20px;
+                  background-color: rgba(87, 172, 162, 0.58);
+                  display: flex;
+                 gap:10px;
+                 align-items: center;
+                "
+              >
+                <img
+                  class="w-16 h-16 rounded-full object-cover"
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                  alt=""
+                />
+                <h2 class="text-2xl">
+                  Can you explain the importance of typography in design?
+                </h2>
+              </div>
+            </div>
+
+            <form action="" class="relative">
+              <input
+                type="text"
+                placeholder="Type your response here"
+                class="w-full h-16 mt-6 input input-bordered"
+              />
+              <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="tab-content" id="solved">
+            <div
+            class="card p-7 mt-10"
+            style="
+              border: 1px solid grey;
+              border-radius: 20px;
+              height: auto;
+              background-color: rgba(184, 194, 255, 0.3);
+            "
+          >
+            <div class="flex gap-10 items-center">
+              <img
+                class="w-16 h-16 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                alt=""
+              />
+              <h2 class="text-2xl">
+                Can you explain the importance of typography in design?
+              </h2>
+            </div>
+            <form action="" class="relative">
+                <input
+                  type="text"
+                  placeholder="Type your response here"
+                  class="w-full h-16 mt-6 input input-bordered"
+                />
+                <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+              </form>
+          </div>
+
+          <div
+            class="card p-7 mt-10"
+            style="
+              border: 1px solid grey;
+              border-radius: 20px;
+              height: auto;
+              background-color: rgba(184, 194, 255, 0.3);
+            "
+          >
+            <div class="flex gap-10 items-center">
+              <img
+                class="w-16 h-16 rounded-full object-cover"
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                alt=""
+              />
+              <h2 class="text-2xl">
+                Can you explain the importance of typography in design?
+              </h2>
+            </div>
+            <div class="flex flex-col gap-3 mt-3">
+              <div
+                class="previous-response"
+                style="
+                  border: 1px solid grey;
+                  border-radius: 20px;
+                  height: auto;
+                  padding: 10px 20px;
+                  background-color: rgba(87, 172, 162, 0.58);
+                  display: flex;
+                 gap:10px;
+                 align-items: center;
+                "
+              >
+                <img
+                  class="w-16 h-16 rounded-full object-cover"
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                  alt=""
+                />
+                <h2 class="text-2xl">
+                  Can you explain the importance of typography in design?
+                </h2>
+              </div>
+             
+            </div>
+
+            <form action="" class="relative">
+              <input
+                type="text"
+                placeholder="Type your response here"
+                class="w-full h-16 mt-6 input input-bordered"
+              />
+              <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center flex-col pt-6 gap-7" id="sidebar-right">
+        <h1 class="text-3xl" style="color: #4a47f5">Insights</h1>
+
+        <!-- <div>
+                <p class="text-xl text-slate-400">Questions Asked</p>
+                <p class="text-2xl font-bold">5</p>
+            </div> -->
+        <div>
+          <p class="text-xl text-slate-400">Questions Asked</p>
+          <p class="text-2xl font-bold">5</p>
+        </div>
+
+        <div>
+          <p class="text-xl text-slate-400">Response Rate</p>
+          <p class="text-2xl font-bold text-green-600">
+            15%<span><i class="fa-solid fa-arrow-up"></i></span>
+          </p>
+        </div>
+
+        <div>
+          <p class="text-xl text-slate-400">Total Responses</p>
+          <p class="text-2xl font-bold">27</p>
+        </div>
+        <div>
+          <p class="text-xl text-slate-400">Points Awarded</p>
+          <p class="text-2xl font-bold">
+            23
+            <span><i class="fa-solid fa-star" style="color: #eee044"></i></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <form action="" class="fixed" style="bottom: 30px; width: 800px; left: 50%; transform: translate(-50%,0);">
+        <input
+          type="text"
+          placeholder="Type your response here"
+          class="w-full  mt-6 input input-bordered"
+          style=" 
+          border: 3px solid black;
+          height: 70px;"
+        />
+        <button class="text-4xl absolute" style="top:40px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      function openTab(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+    </script>
+  </body>
+</html>
