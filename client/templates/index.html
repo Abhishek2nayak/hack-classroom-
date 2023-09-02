@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body
+    class="relative overflow-hidden"
+    style="background-color: rgba(68, 55, 220, 1)"
+  >
+    <!-- left div for heading -->
+
+    <div
+      class="w-2/5 h-screen flex justify-center items-center"
+      style="background-color: rgba(68, 55, 220, 1)"
+    >
+      <h1>
+        <span class="text-5xl text-slate-400">Welcome to</span>
+        <br />
+
+        <span class="text-7xl font-medium text-white">AskClass</span>
+      </h1>
+    </div>
+
+    <!-- right div to select role  -->
+
+    <div
+      class="w-3/5 h-screen absolute text-black flex justify-center items-center flex-col gap-8"
+      style="
+        top: 0;
+        right: 0;
+        border-radius: 80px 0px 0px 80px;
+        background-color: rgba(242, 244, 251, 1);
+      "
+    >
+      <p class="text-2xl font-semibold" style="color: rgba(68, 30, 175, 1)">
+        Select Your Role to Begin
+      </p>
+      <button
+        class="btn rounded-3xl shadow-xl w-2/5 flex justify-center items-center gap-5"
+        style="height: 80px; background-color: white"
+      >
+        I’m a Student <img class="w-8" src="./../assets/graduated.png" alt="" />
+      </button>
+      <button
+        class="btn rounded-3xl shadow-xl w-2/5 flex justify-center items-center gap-5"
+        style="height: 80px; background-color: white"
+      >
+        I’m a Teacher<img class="w-8" src="./../assets/teacher.png" alt="" />
+      </button>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>
