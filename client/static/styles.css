@@ -1,0 +1,42 @@
+#main {
+    width: 100vw;
+    
+}
+#middle {
+    width: 70%;
+}
+#sidebar-left {
+    width: 14%;
+    
+}
+#sidebar-right {
+  
+    width: 14%;
+}
+.tablinks {
+    border-radius: 18px;
+    outline: none;
+    padding:3px 40px;
+    font-size: 13px;
+    color:black;
+
+}
+.tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tab-content {
+    display: none;
+    padding: 6px 12px;
+    
+  }
+
+  #new {
+    display: block;
+  }
