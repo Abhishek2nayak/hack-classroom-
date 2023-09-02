@@ -72,33 +72,76 @@
         </div>
       </div>
     </div>
+
+    <!-- navabar ended  -->
+
     <!-- main component  -->
 
     <div class="container flex justify-between pt-10" id="main">
       <!-- sidebar left  -->
+      <!-- Note : some code below needed to modify -->
       <div class="drawer lg:drawer-open" id="sidebar-left">
-        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content flex flex-col items-center justify-center">
-          <!-- Page content here -->
-        </div>
         <div class="drawer-side">
-          <!-- <label for="my-drawer-2" class="drawer-overlay"></label>  -->
-
           <ul class="menu p-4 w-60 text-base-content">
             <!-- Sidebar content here -->
             <li>
               <h1 class="text-3xl" style="color: #4a47f5">My Courses</h1>
             </li>
+
+            <!-- all course should list here  -->
+
             <li><a>Course 1</a></li>
             <li><a>Course 2</a></li>
           </ul>
         </div>
-        <button class="btn btn-active absolute top-2/3 m-4" id="add-course">
+
+        <!-- button to add new course  -->
+
+        <button
+          onclick="my_modal_3.showModal()"
+          class="btn btn-active absolute top-2/3 m-4"
+          id="add-course"
+        >
           Add Course
         </button>
+        <dialog id="my_modal_3" class="modal">
+          <form method="dialog" class="modal-box">
+            <button
+              class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            >
+              ✕
+            </button>
+
+            <form action="" class="flex flex-col gap-6 pt-8">
+              <div class="form-control w-full">
+                <span class="label-text">Course Name</span>
+                <input
+                  type="text"
+                  placeholder="e.g. James John"
+                  class="input input-bordered w-full mt-3"
+                />
+              </div>
+              <div class="form-control w-full">
+                <span class="label-text">Class Code</span>
+                <input
+                  type="text"
+                  placeholder="10-digit access code"
+                  class="input input-bordered w-full mt-3"
+                />
+              </div>
+              <input
+                type="submit"
+                value="Sign Up"
+                class="input text-white font-bold input-bordered w-full mt-3"
+                style="background-color: #4b13e9"
+              />
+            </form>
+          </form>
+        </dialog>
       </div>
 
-      <!-- main container  -->
+      <!-- middle container to show all type of question  -->
+
 
       <div class="card bg-base-100 shadow-xl p-10" id="middle">
         <h1 class="text-5xl text-black font-medium">
@@ -135,6 +178,10 @@
           </button>
         </div>
 
+
+
+        <!-- Tab Content of new question start -->
+
         <div class="tab-content" id="new">
           <div
             class="card p-7 mt-10"
@@ -156,13 +203,18 @@
               </h2>
             </div>
             <form action="" class="relative">
-                <input
-                  type="text"
-                  placeholder="Type your response here"
-                  class="w-full h-16 mt-6 input input-bordered"
-                />
-                <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
-              </form>
+              <input
+                type="text"
+                placeholder="Type your response here"
+                class="w-full h-16 mt-6 input input-bordered"
+              />
+              <button
+                class="text-2xl absolute"
+                style="top: 30px; right: 30px; width: 30px"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
           </div>
 
           <div
@@ -194,8 +246,8 @@
                   padding: 10px 20px;
                   background-color: rgba(87, 172, 162, 0.58);
                   display: flex;
-                 gap:10px;
-                 align-items: center;
+                  gap: 10px;
+                  align-items: center;
                 "
               >
                 <img
@@ -216,8 +268,8 @@
                   padding: 10px 20px;
                   background-color: rgba(87, 172, 162, 0.58);
                   display: flex;
-                 gap:10px;
-                 align-items: center;
+                  gap: 10px;
+                  align-items: center;
                 "
               >
                 <img
@@ -237,12 +289,22 @@
                 placeholder="Type your response here"
                 class="w-full h-16 mt-6 input input-bordered"
               />
-              <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+              <button
+                class="text-2xl absolute"
+                style="top: 30px; right: 30px; width: 30px"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
             </form>
           </div>
         </div>
+
+  <!-- Tab Content of overdue question start -->
+
+
+
         <div class="tab-content" id="overdue">
-            <div
+          <div
             class="card p-7 mt-10"
             style="
               border: 1px solid grey;
@@ -262,13 +324,18 @@
               </h2>
             </div>
             <form action="" class="relative">
-                <input
-                  type="text"
-                  placeholder="Type your response here"
-                  class="w-full h-16 mt-6 input input-bordered"
-                />
-                <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
-              </form>
+              <input
+                type="text"
+                placeholder="Type your response here"
+                class="w-full h-16 mt-6 input input-bordered"
+              />
+              <button
+                class="text-2xl absolute"
+                style="top: 30px; right: 30px; width: 30px"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
           </div>
 
           <div
@@ -280,7 +347,6 @@
               background-color: rgba(184, 194, 255, 0.3);
             "
           >
-          
             <div class="flex flex-col gap-3 mt-3">
               <div
                 class="previous-response"
@@ -291,8 +357,8 @@
                   padding: 10px 20px;
                   background-color: rgba(87, 172, 162, 0.58);
                   display: flex;
-                 gap:10px;
-                 align-items: center;
+                  gap: 10px;
+                  align-items: center;
                 "
               >
                 <img
@@ -313,8 +379,8 @@
                   padding: 10px 20px;
                   background-color: rgba(87, 172, 162, 0.58);
                   display: flex;
-                 gap:10px;
-                 align-items: center;
+                  gap: 10px;
+                  align-items: center;
                 "
               >
                 <img
@@ -334,12 +400,20 @@
                 placeholder="Type your response here"
                 class="w-full h-16 mt-6 input input-bordered"
               />
-              <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+              <button
+                class="text-2xl absolute"
+                style="top: 30px; right: 30px; width: 30px"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
             </form>
           </div>
         </div>
+
+  <!-- Tab Content of solved question start -->
+
         <div class="tab-content" id="solved">
-            <div
+          <div
             class="card p-7 mt-10"
             style="
               border: 1px solid grey;
@@ -359,13 +433,18 @@
               </h2>
             </div>
             <form action="" class="relative">
-                <input
-                  type="text"
-                  placeholder="Type your response here"
-                  class="w-full h-16 mt-6 input input-bordered"
-                />
-                <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
-              </form>
+              <input
+                type="text"
+                placeholder="Type your response here"
+                class="w-full h-16 mt-6 input input-bordered"
+              />
+              <button
+                class="text-2xl absolute"
+                style="top: 30px; right: 30px; width: 30px"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
           </div>
 
           <div
@@ -397,8 +476,8 @@
                   padding: 10px 20px;
                   background-color: rgba(87, 172, 162, 0.58);
                   display: flex;
-                 gap:10px;
-                 align-items: center;
+                  gap: 10px;
+                  align-items: center;
                 "
               >
                 <img
@@ -410,7 +489,6 @@
                   Can you explain the importance of typography in design?
                 </h2>
               </div>
-             
             </div>
 
             <form action="" class="relative">
@@ -419,11 +497,20 @@
                 placeholder="Type your response here"
                 class="w-full h-16 mt-6 input input-bordered"
               />
-              <button class="text-2xl absolute" style="top:30px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
+              <button
+                class="text-2xl absolute"
+                style="top: 30px; right: 30px; width: 30px"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
             </form>
           </div>
         </div>
       </div>
+
+
+
+      <!-- sidebar right to show all Insights of student  -->
 
       <div class="flex items-center flex-col pt-6 gap-7" id="sidebar-right">
         <h1 class="text-3xl" style="color: #4a47f5">Insights</h1>
@@ -458,17 +545,32 @@
       </div>
     </div>
 
-    <form action="" class="fixed" style="bottom: 30px; width: 800px; left: 50%; transform: translate(-50%,0);">
-        <input
-          type="text"
-          placeholder="Type your response here"
-          class="w-full  mt-6 input input-bordered"
-          style=" 
-          border: 3px solid black;
-          height: 70px;"
-        />
-        <button class="text-4xl absolute" style="top:40px; right:30px; width: 30px; " ><i class="fa-solid fa-paper-plane"></i></button>
-      </form>
+
+    <!-- form to ask question  -->
+
+    <form
+      action=""
+      class="fixed"
+      style="
+        bottom: 30px;
+        width: 800px;
+        left: 50%;
+        transform: translate(-50%, 0);
+      "
+    >
+      <input
+        type="text"
+        placeholder="Type your response here"
+        class="w-full mt-6 input input-bordered"
+        style="border: 3px solid black; height: 70px"
+      />
+      <button
+        class="text-4xl absolute"
+        style="top: 40px; right: 30px; width: 30px"
+      >
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </form>
 
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
@@ -477,6 +579,11 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+
+
+      // to show ative tabcontent and hide inactive  
+
+      
       function openTab(evt, cityName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab-content");
