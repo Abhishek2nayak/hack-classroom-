@@ -45,16 +45,20 @@ def question(name):
         if name in students:
             students[name]["questions"] += 1
             students[name]["points"] += 1
-            question_id = len(questions) + 1 # unique id for the question
+            question_id = len(questions) + 1 # generate a unique id for the question
             # Get the course parameter from the query string
             course = request.args.get("course")
+            # Get the anonymous parameter from the query string and convert it to a boolean value
+            anonymous = request.args.get("anonymous")
+            anonymous = anonymous.lower() in ["true", "yes", "1"]
             questions[question_id] = {
                 "asker": name, # Name of the student who asked the question
                 "answers": {}, # Answers as a dictionary of {answerer: answer}
                 "correct": None, # Name of the student who gave the correct answer, if any
                 "rewarded": None, # Name of the student who received the reward from the asker, if any
                 "posted": datetime.datetime.now(), # Date and time when the question was posted
-                "course": course # Name of the course that the question belongs to
+                "course": course, # Name of the course that the question belongs to
+                "anonymous": anonymous # Whether the question is anonymous or not
             }
             return jsonify({"message": "Question posted", "question_id": question_id})
         else:
@@ -66,17 +70,20 @@ def question(name):
             students[name]["points"] += 1
             question_id = request.args.get("question_id") # get the question id from the query string
             answer = request.args.get("answer") # get the answer from the query string
+            # Get the anonymous parameter from the query string and convert it to a boolean value
+            anonymous = request.args.get("anonymous")
+            anonymous = anonymous.lower() in ["true", "yes", "1"]
             if question_id and answer: # check if both parameters are provided
                 question_id = int(question_id) # convert the question id to an integer
                 if question_id in questions: # check if the question id exists
-                    # Get the status of the question
+                    # Get the status of the question by calling another function that I defined earlier (not shown here)
                     status = status(question_id)["status"]
                     # Check if the status is not solved
                     if status != "solved":
-                        questions[question_id]["answers"][name] = answer # add the answer to the question with the name of the answerer as the key
-                        # Check if the status is overdue
-                        if status == "overdue":
-                            students[name]["points"] += 1 # give an extra point to the answerer for answering an overdue question
+                        questions[question_id]["answers"][name] = {
+                            "answer": answer, # store the answer text 
+                            "anonymous": anonymous # store whether the answer is anonymous or not 
+                        } # add an answer as a dictionary with two keys: answer and anonymous
                         return jsonify({"message": "Question answered"})
                     else:
                         return jsonify({"message": "Question already solved"})
@@ -86,33 +93,6 @@ def question(name):
                 return jsonify({"message": "Missing parameters"})
         else:
             return jsonify({"message": "Student not found"})
-
-# Define a route for marking a correct answer and giving an extra point to the answerer
-@app.route('/correct/<string:name>', methods=['PUT'])
-def correct(name):
-    # If the request method is PUT, check if the user is a teacher and mark a correct answer for a question with an id, and give an extra point to the answerer
-    if request.method == 'PUT':
-        if name in students and students[name]["role"] == "teacher": # check if the user is a teacher
-            question_id = request.args.get("question_id") # get the question id from the query string
-            answerer = request.args.get("answerer") # get the name of the student who gave the answer from the query string
-            if question_id and answerer: # check if both parameters are provided
-                question_id = int(question_id) # convert the question id to an integer
-                if question_id in questions: # check if the question id exists
-                    if questions[question_id]["correct"] is None: # check if there is no correct answer marked yet
-                        if answerer in questions[question_id]["answers"]: # check if the answerer exists in the answers dictionary
-                            questions[question_id]["correct"] = answerer # mark the correct answer with the name of the answerer
-                            students[answerer]["points"] += 1 # give an extra point to the answerer
-                            return jsonify({"message": "Correct answer marked"})
-                        else:
-                            return jsonify({"message": "Answerer not found"})
-                    else:
-                        return jsonify({"message": "Correct answer already marked"})
-                else:
-                    return jsonify({"message": "Question not found"})
-            else:
-                return jsonify({"message": "Missing parameters"})
-        else:
-            return jsonify({"message": "User not authorized"})
         
 @app.route('/questions/<string:course>', methods=['GET'])
 def questions_by_course(course):
@@ -180,6 +160,11 @@ def correct(name):
                         if answerer in questions[question_id]["answers"]: # check if the answerer exists in the answers dictionary
                             questions[question_id]["correct"] = answerer # mark the correct answer with the name of the answerer
                             students[answerer]["points"] += 1 # give an extra point to the answerer
+                            # Get the status of the question
+                            status = status(question_id)["status"]
+                            # Check if the status is overdue
+                            if status == "overdue":
+                                students[answerer]["points"] += 1 # give another extra point to the answerer for answering an overdue question
                             return jsonify({"message": "Correct answer marked"})
                         else:
                             return jsonify({"message": "Answerer not found"})
