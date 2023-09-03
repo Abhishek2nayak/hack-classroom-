@@ -19,7 +19,11 @@
     <div class="navbar">
       <div class="flex-1 pl-6">
         <a class="btn btn-ghost normal-case text-xl">
-          <img src="./../assets/logo.png" alt="" class="w-10 h-10" />
+          <img
+            src="{{ url_for('static', filename='assets/logo.png') }}"
+            alt=""
+            class="w-10 h-10"
+          />
           <span class="text-lg" style="color: #4b13e9">
             Ask<br />
             Class
@@ -55,6 +59,7 @@
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
               />
             </div>
+            {{name}}
           </label>
           <ul
             tabindex="0"
@@ -89,9 +94,11 @@
             </li>
 
             <!-- all course should list here  -->
-
-            <li><a>Course 1</a></li>
-            <li><a>Course 2</a></li>
+            {% for course_info in courses %}
+            <li>
+              {{ course_info.course }}
+            </li>
+            {% endfor %}
           </ul>
         </div>
 
@@ -112,10 +119,16 @@
               ✕
             </button>
 
-            <form action="" class="flex flex-col gap-6 pt-8">
+            <form
+              action="/add-course"
+              method="POST"
+              class="flex flex-col gap-6 pt-8"
+            >
+              <input type="hidden" name="teacher" value="{{ name }}" />
               <div class="form-control w-full">
                 <span class="label-text">Course Name</span>
                 <input
+                  name="course_name"
                   type="text"
                   placeholder="e.g. James John"
                   class="input input-bordered w-full mt-3"
@@ -124,6 +137,7 @@
               <div class="form-control w-full">
                 <span class="label-text">Class Code</span>
                 <input
+                  name="class_code"
                   type="text"
                   placeholder="10-digit access code"
                   class="input input-bordered w-full mt-3"
@@ -141,7 +155,6 @@
       </div>
 
       <!-- middle container to show all type of question  -->
-
 
       <div class="card bg-base-100 shadow-xl p-10" id="middle">
         <h1 class="text-5xl text-black font-medium">
@@ -177,8 +190,6 @@
             Sort <i class="fa-solid fa-arrow-up-wide-short"></i>
           </button>
         </div>
-
-
 
         <!-- Tab Content of new question start -->
 
@@ -299,9 +310,7 @@
           </div>
         </div>
 
-  <!-- Tab Content of overdue question start -->
-
-
+        <!-- Tab Content of overdue question start -->
 
         <div class="tab-content" id="overdue">
           <div
@@ -410,7 +419,7 @@
           </div>
         </div>
 
-  <!-- Tab Content of solved question start -->
+        <!-- Tab Content of solved question start -->
 
         <div class="tab-content" id="solved">
           <div
@@ -508,8 +517,6 @@
         </div>
       </div>
 
-
-
       <!-- sidebar right to show all Insights of student  -->
 
       <div class="flex items-center flex-col pt-6 gap-7" id="sidebar-right">
@@ -545,7 +552,6 @@
       </div>
     </div>
 
-
     <!-- form to ask question  -->
 
     <form
@@ -560,6 +566,7 @@
     >
       <input
         type="text"
+        name="question"
         placeholder="Type your response here"
         class="w-full mt-6 input input-bordered"
         style="border: 3px solid black; height: 70px"
@@ -579,11 +586,8 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+      // to show ative tabcontent and hide inactive
 
-
-      // to show ative tabcontent and hide inactive  
-
-      
       function openTab(evt, cityName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab-content");

@@ -43,19 +43,47 @@
         Select Your Role to Begin
       </p>
       <button
+        id="studButton"
         class="btn rounded-3xl shadow-xl w-2/5 flex justify-center items-center gap-5"
         style="height: 80px; background-color: white"
       >
-        I’m a Student <img class="w-8" src="./../assets/graduated.png" alt="" />
+        I’m a Student
+        <img
+          class="w-8"
+          src="{{ url_for('static', filename='assets/student.png') }}"
+          alt=""
+        />
       </button>
       <button
+        id="teacherButton"
         class="btn rounded-3xl shadow-xl w-2/5 flex justify-center items-center gap-5"
         style="height: 80px; background-color: white"
       >
-        I’m a Teacher<img class="w-8" src="./../assets/teacher.png" alt="" />
+        I’m a Teacher<img
+          class="w-8"
+          src="{{ url_for('static', filename='assets/teacher.png') }}"
+          alt=""
+        />
       </button>
     </div>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      const s_btn = document.getElementById("studButton");
+      const t_btn = document.getElementById("teacherButton");
+
+      s_btn.addEventListener("click", function () {
+        navigateToLogin("student");
+      });
+
+      t_btn.addEventListener("click", function () {
+        navigateToLogin("teacher");
+      });
+
+      function navigateToLogin(role) {
+        // Redirect to the login page with the selected role as a query parameter
+        window.location.href = `/login?role=${role}`;
+      }
+    </script>
   </body>
 </html>
