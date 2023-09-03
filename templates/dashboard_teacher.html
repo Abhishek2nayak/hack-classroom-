@@ -101,7 +101,7 @@
              <button> {{ course_info.course }}</button>
             </li>
             {% endfor %}
-            <li>Course</li>
+           
 
             <!-- all course should list here  -->
            
@@ -111,53 +111,48 @@
         <!-- button to add new course  -->
 
         <button
-          onclick="my_modal_3.showModal()"
+          onclick="showModal()"
           class="btn btn-active absolute top-2/3 m-4"
           id="add-course"
         >
           Add Course
         </button>
-        <dialog id="my_modal_3" class="modal">
-          <form method="dialog" class="modal-box">
-            <button
-              class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >
-              ✕
-            </button>
-
-            <form
-              action="/add-course"
-              method="POST"
-              class="flex flex-col gap-6 pt-8"
-            >
-              <input type="hidden" name="teacher" value="{{ name }}" />
-              <div class="form-control w-full">
-                <span class="label-text">Course Name</span>
-                <input
-                  name="course_name"
-                  type="text"
-                  placeholder="e.g. James John"
-                  class="input input-bordered w-full mt-3"
-                />
-              </div>
-              <div class="form-control w-full">
-                <span class="label-text">Class Code</span>
-                <input
-                  name="class_code"
-                  type="text"
-                  placeholder="10-digit access code"
-                  class="input input-bordered w-full mt-3"
-                />
-              </div>
+    
+        
+        <div class="modal-box" id="modal" style="display: none; z-index: 99; position: fixed; top: 50%; left: 50%; width: 500px; transform: translate(-50%,-50%);">
+          <form
+            action="/add-course"
+            method="POST"
+            class="flex flex-col gap-6 pt-8"
+          >
+            <input type="hidden" name="name" value="{{ name }}" />
+            <div class="form-control w-full">
+              <span class="label-text">Course Name</span>
               <input
-                type="submit"
-                value="Sign Up"
-                class="input text-white font-bold input-bordered w-full mt-3"
-                style="background-color: #4b13e9"
+                name="course_name"
+                type="text"
+                placeholder="e.g. James John"
+                class="input input-bordered w-full mt-3"
               />
-            </form>
+            </div>
+            <div class="form-control w-full">
+              <span class="label-text">Class Code</span>
+              <input
+                name="class_code"
+                type="text"
+                placeholder="10-digit access code"
+                class="input input-bordered w-full mt-3"
+              />
+            </div>
+            <input
+              type="submit"
+              value="Add Course"
+              class="input text-white font-bold input-bordered w-full mt-3"
+              style="background-color: #4b13e9"
+            />
           </form>
-        </dialog>
+        </div>
+        
       </div>
 
       <!-- middle container to show all type of question  -->
@@ -584,6 +579,7 @@
         <i class="fa-solid fa-paper-plane"></i>
       </button>
     </form>
+   
 
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
@@ -606,6 +602,17 @@
         }
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
+      }
+
+      const modal = document.querySelector('#modal')
+      modal.style.display = "none"
+      function showModal() {
+        alert('sdkjkfhsdkj')
+        if(modal.style.display == "block") {
+            modal.style.display = "none";
+        }  else {
+          modal.style.display = "block";
+        }
       }
     </script>
   </body>

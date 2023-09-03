@@ -16,7 +16,7 @@ teachers = {
     'xyz': '1234'
 }
 
-questions = {}
+teacher_questions = {}
 
 
 teacher_courses = {
@@ -71,17 +71,15 @@ def process_login():
 @app.route('/dashboard_teacher/<name>')
 def dashboard_teacher(name):
     courses = teacher_courses.get(name, [])  # Get the courses for the teacher
-    print()
+    print(courses)
     return render_template('dashboard_teacher.html', name=name, courses=courses)
 
 
 @app.route('/add-course', methods=['POST'])
 def add_course():
-    
-    teacher = request.form.get('teacher')
+    teacher = request.form.get('name')
     course_name = request.form.get('course_name')
     class_code = request.form.get('class_code')
-    print(teacher,course_info,course_name)
 
     # Check if the teacher is in the teacher_courses dictionary
     if teacher not in teacher_courses:
@@ -94,6 +92,13 @@ def add_course():
 
     # Redirect back to the teacher's dashboard
     return redirect(url_for('dashboard_teacher', name=teacher))
+
+
+
+
+
+
+
 
 
 # Define a route for getting the status of a question
